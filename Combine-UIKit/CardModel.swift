@@ -8,7 +8,12 @@
 import Foundation
 
 struct CardModel: Hashable, Decodable {
-  let title: String
-  let subTitle: String
-  let imageName: String
+    var id = UUID().uuidString
+    let title: String
+    let subTitle: String
+    let imageName: String
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }

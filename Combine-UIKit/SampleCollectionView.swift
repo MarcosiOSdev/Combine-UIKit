@@ -6,24 +6,38 @@
 //
 
 import UIKit
+import Combine
 
 class SampleCollectionView: UIViewController {
     
     
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout())
-    private var datasource: UICollectionViewDiffableDataSource<Int, String>!
-    
-    private var values = ["Testando 1", "Testando 2"]
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout_bkp())
+    private var datasource: UICollectionViewDiffableDataSource<Int, CardModel>!
+    private var dataProvider = DataProvider()
+    private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
         addRightButton()
         view.backgroundColor = UIColor.systemBackground
+        
+        dataProvider.fetch()
+        dataProvider
+            .dataSubject
+            .sink(receiveValue: add(cards:))
+            .store(in: &cancellables)
+    }
+    
+    private func add(cards: [CardModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, CardModel>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(cards)
+        datasource.apply(snapshot)
     }
     
     private func addRightButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "GO", style: .plain, target: self, action: #selector(addMoreItem))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Pagination", style: .plain, target: self, action: #selector(addMoreItem))
     }
     
     private func setupCollectionView() {
@@ -40,9 +54,9 @@ class SampleCollectionView: UIViewController {
         collectionView.register(ItemCollectionViewCell.self, forCellWithReuseIdentifier: ItemCollectionViewCell.identifier)
         collectionView.register(ItemCollectionViewCell.self, forSupplementaryViewOfKind: "header", withReuseIdentifier: "header")
         
-        datasource = UICollectionViewDiffableDataSource<Int, String>(collectionView: collectionView) { collectionView, indexPath, model in
+        datasource = UICollectionViewDiffableDataSource<Int, CardModel>(collectionView: collectionView) { collectionView, indexPath, model in
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCollectionViewCell.identifier, for: indexPath) as? ItemCollectionViewCell {                
-                cell.textInput = model
+                cell.textInput = model.title
                 return cell
             }
             
@@ -51,7 +65,7 @@ class SampleCollectionView: UIViewController {
         
         datasource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             
-            if let cell = collectionView.dequeueReusableSupplementaryView(ofKind: "header", withReuseIdentifier: "header", for: indexPath) as? ItemCollectionViewCell {
+            if let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? ItemCollectionViewCell {
                 cell.textInput = "Header One"
                 cell.isHeader = true
                 return cell
@@ -59,11 +73,7 @@ class SampleCollectionView: UIViewController {
             return nil
         }
         
-        var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
-        snapshot.appendSections([1])
-        snapshot.appendItems(values, toSection: 1)
-
-        datasource.apply(snapshot)
+        add(cards: [])
     }
     
     private func createCompositionalLayout_bkp() -> UICollectionViewCompositionalLayout {
@@ -89,7 +99,7 @@ class SampleCollectionView: UIViewController {
         
         let section = NSCollectionLayoutSection(group: group)
 //        section.interGroupSpacing = 15
-        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+        section.orthogonalScrollingBehavior = .groupPaging
         section.interGroupSpacing = 16
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
         
@@ -131,15 +141,7 @@ class SampleCollectionView: UIViewController {
     
     @objc
     private func addMoreItem(){
-        guard let lastItem = values.last else { return }
-        
-        let newValue = "Testando \(values.count + 1)"
-        var snapshot = datasource.snapshot()
-        snapshot.insertItems([newValue], beforeItem: lastItem)
-        snapshot.appendItems(values, toSection: 1)
-        datasource.apply(snapshot)
-        
-        values += ["Testando \(values.count + 1)"]
+        dataProvider.fetchNextPage()
     }
 }
 

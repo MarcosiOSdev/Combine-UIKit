@@ -30,9 +30,22 @@ class DataProvider {
             }).store(in: &cancellables)
     }
     
+    func fetch() {
+        let models = [
+            CardModel(title: "valor 1", subTitle: "valor 1", imageName: "valor 1"),
+            CardModel(title: "valor 2", subTitle: "valor 2", imageName: "valor 2"),
+            CardModel(title: "valor 3", subTitle: "valor 3", imageName: "valor 3")
+        ]
+        dataSubject.value += models
+    }
+    
     func fetchNextPage() {
         currentPage += 1
-        let models = [CardModel(title: "valor 1", subTitle: "valor 1", imageName: "valor 1")]
+        let countValues = dataSubject.value.count + 1
+        var models: [CardModel] = []
+        for i in 0...10 {
+            models += [CardModel(title: "valor \( countValues + i) page \(currentPage)", subTitle: "valor \(countValues + i)", imageName: "valor \(countValues + i)")]
+        }
         dataSubject.value += models
     }
 }
