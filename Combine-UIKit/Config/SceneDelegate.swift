@@ -21,8 +21,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let viewController = ViewController()
         let sampleCollectionView = SampleCollectionView()
+        let inputUserViewController = InputUserViewController()
+        let frequencyUserInputViewController = FrequencyUserInputViewController()
+        
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.pushViewController(sampleCollectionView, animated: false)
+        navigationController.pushViewController(inputUserViewController, animated: false)
+        navigationController.pushViewController(frequencyUserInputViewController, animated: false)
+        
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }

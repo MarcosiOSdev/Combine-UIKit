@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D41674A2704FCBC00DCCE0E /* InputUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4167492704FCBC00DCCE0E /* InputUserViewController.swift */; };
+		1D41674D2705009600DCCE0E /* FrequencyUserInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D41674C2705009600DCCE0E /* FrequencyUserInputViewController.swift */; };
 		1D4C693A26E55E5C00B62101 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C693926E55E5C00B62101 /* AppDelegate.swift */; };
 		1D4C693C26E55E5C00B62101 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C693B26E55E5C00B62101 /* SceneDelegate.swift */; };
 		1D4C693E26E55E5C00B62101 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4C693D26E55E5C00B62101 /* ViewController.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D4167492704FCBC00DCCE0E /* InputUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUserViewController.swift; sourceTree = "<group>"; };
+		1D41674C2705009600DCCE0E /* FrequencyUserInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyUserInputViewController.swift; sourceTree = "<group>"; };
 		1D4C693626E55E5C00B62101 /* Combine-UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Combine-UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D4C693926E55E5C00B62101 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D4C693B26E55E5C00B62101 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +51,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D4167432704FC3300DCCE0E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1D41674B2705007B00DCCE0E /* FrequencyInputUser */,
+				1D4167482704FCB100DCCE0E /* InputUsers */,
+				1D4167442704FC4A00DCCE0E /* CollectionView */,
+				1D4167452704FC7300DCCE0E /* InitialSample */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1D4167442704FC4A00DCCE0E /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				1D4C695526E5B1B400B62101 /* DataProvider.swift */,
+				1D4C695726E5B1DA00B62101 /* CardModel.swift */,
+				1D4C695126E5A8EC00B62101 /* SampleCollectionView.swift */,
+				1D4C695326E5ABBD00B62101 /* ItemCollectionViewCell.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		1D4167452704FC7300DCCE0E /* InitialSample */ = {
+			isa = PBXGroup;
+			children = (
+				1D4C694D26E55F0800B62101 /* Car.swift */,
+				1D4C694F26E55F3200B62101 /* CarViewModel.swift */,
+				1D4C693D26E55E5C00B62101 /* ViewController.swift */,
+			);
+			path = InitialSample;
+			sourceTree = "<group>";
+		};
+		1D4167462704FC8700DCCE0E /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				1D4C693926E55E5C00B62101 /* AppDelegate.swift */,
+				1D4C693B26E55E5C00B62101 /* SceneDelegate.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		1D4167472704FC9000DCCE0E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1D4C694226E55E5E00B62101 /* Assets.xcassets */,
+				1D4C694426E55E5E00B62101 /* LaunchScreen.storyboard */,
+				1D4C694726E55E5E00B62101 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1D4167482704FCB100DCCE0E /* InputUsers */ = {
+			isa = PBXGroup;
+			children = (
+				1D4167492704FCBC00DCCE0E /* InputUserViewController.swift */,
+			);
+			path = InputUsers;
+			sourceTree = "<group>";
+		};
+		1D41674B2705007B00DCCE0E /* FrequencyInputUser */ = {
+			isa = PBXGroup;
+			children = (
+				1D41674C2705009600DCCE0E /* FrequencyUserInputViewController.swift */,
+			);
+			path = FrequencyInputUser;
+			sourceTree = "<group>";
+		};
 		1D4C692D26E55E5B00B62101 = {
 			isa = PBXGroup;
 			children = (
@@ -66,18 +137,9 @@
 		1D4C693826E55E5C00B62101 /* Combine-UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				1D4C693926E55E5C00B62101 /* AppDelegate.swift */,
-				1D4C693B26E55E5C00B62101 /* SceneDelegate.swift */,
-				1D4C693D26E55E5C00B62101 /* ViewController.swift */,
-				1D4C694226E55E5E00B62101 /* Assets.xcassets */,
-				1D4C694426E55E5E00B62101 /* LaunchScreen.storyboard */,
-				1D4C694726E55E5E00B62101 /* Info.plist */,
-				1D4C694D26E55F0800B62101 /* Car.swift */,
-				1D4C694F26E55F3200B62101 /* CarViewModel.swift */,
-				1D4C695126E5A8EC00B62101 /* SampleCollectionView.swift */,
-				1D4C695326E5ABBD00B62101 /* ItemCollectionViewCell.swift */,
-				1D4C695526E5B1B400B62101 /* DataProvider.swift */,
-				1D4C695726E5B1DA00B62101 /* CardModel.swift */,
+				1D4167462704FC8700DCCE0E /* Config */,
+				1D4167432704FC3300DCCE0E /* ViewControllers */,
+				1D4167472704FC9000DCCE0E /* Resources */,
 			);
 			path = "Combine-UIKit";
 			sourceTree = "<group>";
@@ -156,7 +218,9 @@
 				1D4C695626E5B1B400B62101 /* DataProvider.swift in Sources */,
 				1D4C695226E5A8EC00B62101 /* SampleCollectionView.swift in Sources */,
 				1D4C695026E55F3200B62101 /* CarViewModel.swift in Sources */,
+				1D41674D2705009600DCCE0E /* FrequencyUserInputViewController.swift in Sources */,
 				1D4C695826E5B1DA00B62101 /* CardModel.swift in Sources */,
+				1D41674A2704FCBC00DCCE0E /* InputUserViewController.swift in Sources */,
 				1D4C694E26E55F0800B62101 /* Car.swift in Sources */,
 				1D4C693C26E55E5C00B62101 /* SceneDelegate.swift in Sources */,
 				1D4C695426E5ABBD00B62101 /* ItemCollectionViewCell.swift in Sources */,
@@ -299,7 +363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Combine-UIKit/Info.plist";
+				INFOPLIST_FILE = "Combine-UIKit/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,7 +381,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Combine-UIKit/Info.plist";
+				INFOPLIST_FILE = "Combine-UIKit/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
