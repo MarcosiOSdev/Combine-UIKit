@@ -54,7 +54,7 @@
 		1D4167432704FC3300DCCE0E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				1D41674B2705007B00DCCE0E /* FrequencyInputUser */,
+				1D41674B2705007B00DCCE0E /* FrequencyUserInput */,
 				1D4167482704FCB100DCCE0E /* InputUsers */,
 				1D4167442704FC4A00DCCE0E /* CollectionView */,
 				1D4167452704FC7300DCCE0E /* InitialSample */,
@@ -110,12 +110,12 @@
 			path = InputUsers;
 			sourceTree = "<group>";
 		};
-		1D41674B2705007B00DCCE0E /* FrequencyInputUser */ = {
+		1D41674B2705007B00DCCE0E /* FrequencyUserInput */ = {
 			isa = PBXGroup;
 			children = (
 				1D41674C2705009600DCCE0E /* FrequencyUserInputViewController.swift */,
 			);
-			path = FrequencyInputUser;
+			path = FrequencyUserInput;
 			sourceTree = "<group>";
 		};
 		1D4C692D26E55E5B00B62101 = {
